@@ -9,19 +9,9 @@
     </div>
 </template>
 
-<script lang="ts">
-    import {Component, Vue, Prop} from "vue-property-decorator";
-
-    @Component({
-        components: {},
+<script>
+    export default {
         props: ["text", "status", "innerStatus"],
-    })
-    export default class UiPill extends Vue {
-        @Prop()
-        private text?: string;
-
-        @Prop()
-        private status?: string;
     }
 </script>
 

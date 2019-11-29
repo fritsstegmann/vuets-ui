@@ -1,1 +1,10 @@
 src/
+.idea/
+node_modules/
+webpack.config.js
+mix-manifest.json
+yarn-error.log
+tailwind.js
+tsconfig.json
+.gitignore
+.npmignore

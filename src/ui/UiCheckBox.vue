@@ -14,7 +14,7 @@
 </template>
 
 <script lang="ts">
-    import {Component, Prop, Vue, Watch} from "vue-property-decorator";
+    import {Component, Watch, Prop, Vue} from "vue-property-decorator";
 
     @Component({
         components: {},
