@@ -1,8 +1,8 @@
 <template>
-    <div class="w-full block relative">
-        <div class="bg-gray-500 rounded-full" @mouseenter="mouseEnter" @mouseout="mouseOut">
+    <div class="w-full block relative m-h-1">
+        <div class="bg-gray-300 rounded-full" @mouseenter="mouseEnter" @mouseout="mouseOut">
             <div v-if="progress < 100"
-                 class="h-2 bar bg-blue-500 rounded-full"
+                 class="h-2 bar bg-gray-600 rounded-full"
                  :style="{'width': progress + '%'}"></div>
             <div v-if="progress === 100"
                  class="h-2 bar bg-green-500 rounded-full w-full"></div>

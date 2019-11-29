@@ -12,15 +12,15 @@
         "noImplicitReturns": true,
         "sourceMap": true,
         "skipLibCheck": true,
+        "resolveJsonModule": true,
         "outDir": "./dist/",
         "lib": [
             "es2015"
         ]
     },
     "include": [
-        "./**/*.js",
-        "./**/*.vue",
-        "./**/*.ts"
+        "src/**/*.ts",
+        "src/**/*.vue"
     ],
     "exclude": [
         "./node_modules"

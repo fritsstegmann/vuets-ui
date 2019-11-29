@@ -7,11 +7,17 @@
     </div>
 </template>
 
-<script>
-    export default {
+<script lang="ts">
+    import {Component, Prop, Vue} from "vue-property-decorator";
+
+    @Component({
+        components: {},
         props: [],
-        methods: {
+        data() {
+            return {};
         }
+    })
+    export default class UiCard extends Vue {
     }
 </script>
 

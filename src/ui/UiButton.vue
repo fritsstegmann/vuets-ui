@@ -1,17 +1,32 @@
 <template>
-    <button :class="{'btn-primary': type === 'primary','btn-outline': type === 'secondary'}" class="btn"
-            @click="click">
-        {{ text }}
+    <button
+            :class="{
+                'btn-primary': type === 'primary',
+                'btn-outline': type === 'secondary',
+            }"
+            class="btn" @click="click">
+        <slot/>
     </button>
 </template>
 
-<script>
-    export default {
-        props: ['type', 'text'],
-        methods: {
-            click(event) {
-                this.$emit('click', event);
-            }
+<script lang="ts">
+    import {Component, Emit, Prop, Vue} from "vue-property-decorator";
+
+    @Component({
+        components: {},
+        props: ['type'],
+        data() {
+            return {};
+        }
+    })
+    export default class UiButton extends Vue {
+
+        @Prop({default: "primary"})
+        private type?: string;
+
+        @Emit()
+        public click() {
+
         }
     }
 </script>
@@ -90,4 +105,5 @@
             }
         }
     }
+
 </style>
