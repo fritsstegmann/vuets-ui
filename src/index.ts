@@ -1,7 +1,12 @@
+// @ts-ignore
 import UiButton from "./ui/UiButton";
+// @ts-ignore
 import UiCard from "./ui/UiCard";
+// @ts-ignore
 import UiPill from "./ui/UiPill";
+// @ts-ignore
 import UiProgress from "./ui/UiProgress";
+// @ts-ignore
 import UiModal from "./ui/UiModal";
 
 export function VueUI(v: any) {

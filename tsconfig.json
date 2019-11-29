@@ -20,7 +20,7 @@
     },
     "include": [
         "src/**/*.ts",
-        "src/**/*.vue"
+        "src/ui/*.vue"
     ],
     "exclude": [
         "./node_modules"
