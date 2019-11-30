@@ -6,7 +6,7 @@
   "typings": "dist/index.d.ts",
   "license": "MIT",
   "files": [
-    "dist/index.js"
+    "dist/**/*"
   ],
   "scripts": {
     "compile": "node_modules/webpack/bin/webpack.js --progress --hide-modules --config=webpack.config.js",
