@@ -60,23 +60,4 @@
 </script>
 
 <style scoped lang="scss">
-    div {
-        input {
-            position: absolute !important;
-            visibility: hidden !important;
-            display: none !important;
-            height: 0 !important;
-            width: 0 !important;
-            padding: 0 !important;
-        }
-
-        input[type="radio"]:checked ~ .check {
-            @apply bg-gray-700 border-gray-500;
-        }
-
-        .check {
-            @apply mt-1 w-4 h-4 rounded-full border-2 border-solid border-gray-500 relative bg-white items-center;
-            cursor: pointer;
-        }
-    }
 </style>

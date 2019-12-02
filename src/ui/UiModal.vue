@@ -3,15 +3,12 @@
         <div class="modal-mask">
             <div class="modal-wrapper" @click.stop>
                 <div class="container m-auto">
-                    <ui:card>
+                    <ui-card>
                         <slot></slot>
                         <template v-slot:footer>
-                            <slot name="footer">
-
-                            </slot>
+                            <slot name="footer"></slot>
                         </template>
-
-                    </ui:card>
+                    </ui-card>
                 </div>
             </div>
         </div>

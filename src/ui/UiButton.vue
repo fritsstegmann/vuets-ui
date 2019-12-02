@@ -2,9 +2,11 @@
     <button
             :class="{
                 'btn-primary': type === 'primary',
-                'btn-outline': type === 'secondary',
+                'btn-secondary': type === 'secondary',
+                'btn-link': type === 'link',
+                'btn-destructive': type === 'destructive',
             }"
-            class="btn" @click="click">
+            class="btn-qew789bdf focus:shadow-outline rounded py-2 px-6 shadow outline-none" @click="click">
         <slot/>
     </button>
 </template>
@@ -32,22 +34,9 @@
 </script>
 
 <style scoped lang="scss">
-    .btn {
-        @apply rounded py-2 px-6 shadow outline-none text-gray-400;
+    .btn-qew789bdf {
         &:disabled {
             cursor: not-allowed;
-        }
-
-        &:hover {
-            @apply outline-none;
-        }
-
-        &:focus {
-            @apply outline-none;
-        }
-
-        &:active {
-            @apply outline-none;
         }
 
         &.btn-link {
@@ -57,7 +46,7 @@
             }
         }
 
-        &.btn-danger {
+        &.btn-destructive {
             @apply text-red-600;
         }
 
@@ -83,7 +72,7 @@
             }
         }
 
-        &.btn-outline {
+        &.btn-secondary {
             @apply border-gray-600 border-solid border text-gray-600 shadow-none;
             &:disabled {
                 cursor: not-allowed;

@@ -1,7 +1,7 @@
 <template>
-    <div class="card">
+    <div class="ui-card-qew789bdf bg-white rounded shadow">
         <slot></slot>
-        <div v-if="$slots.footer" class="card-footer">
+        <div v-if="$slots.footer" class="bg-gray-200 p-2 rounded-b">
             <slot name="footer"></slot>
         </div>
     </div>
@@ -22,26 +22,9 @@
 </script>
 
 <style scoped lang="scss">
-    .card {
-        @apply bg-white rounded shadow;
-
-        &.card-active {
-            @apply border-teal-500 border-2 border-solid;
-        }
-
+    .ui-card-qew789bdf {
         .card-body {
             @apply py-4 px-4;
         }
-
-        .card-footer {
-            @apply bg-gray-200 p-2 rounded-b;
-            .btn {
-                @apply  text-gray-600;
-                &.btn-danger {
-                    @apply text-red-600;
-                }
-            }
-        }
-
     }
 </style>

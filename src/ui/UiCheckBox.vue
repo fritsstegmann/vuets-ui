@@ -7,8 +7,6 @@
                 ref="checkBox"
                 :class="{'error': hasError}"
         />
-
-        <div class="check" @click="check()"></div>
         <slot></slot>
     </div>
 </template>
@@ -55,23 +53,4 @@
 </script>
 
 <style scoped lang="scss">
-    div {
-        input {
-            position: absolute !important;
-            visibility: hidden !important;
-            display: none !important;
-            height: 0 !important;
-            width: 0 !important;
-            padding: 0 !important;
-        }
-
-        input[type="checkbox"]:checked ~ .check {
-            @apply bg-gray-400 border-gray-600;
-        }
-
-        .check {
-            @apply w-4 h-4 rounded border-2 border-solid border-gray-500 relative bg-white items-center;
-            cursor: pointer;
-        }
-    }
 </style>
