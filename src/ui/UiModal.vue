@@ -1,6 +1,6 @@
 <template>
-    <transition name="modal">
-        <div class="modal-mask">
+    <transition name="modal-qew789bdf">
+        <div class="modal-mask-qew789bdf">
             <div class="modal-wrapper" @click.stop>
                 <div class="container m-auto">
                     <ui-card>
@@ -35,7 +35,7 @@
 </script>
 
 <style scoped lang="scss">
-    .modal-mask {
+    .modal-mask-qew789bdf {
         position: fixed;
         z-index: 9998;
         top: 0;
@@ -45,38 +45,29 @@
         background-color: rgba(0, 0, 0, .5);
         display: table;
         transition: opacity .3s ease;
+
+        .modal-wrapper {
+            @apply m-auto pt-32;
+            width: fit-content;
+            z-index: 9999;
+            vertical-align: middle;
+        }
+
+        .container {
+            transition: all .3s ease;
+        }
     }
 
-    .modal-wrapper {
-        @apply m-auto pt-32;
-        width: fit-content;
-        z-index: 9999;
-        vertical-align: middle;
-    }
-
-    .container {
-        transition: all .3s ease;
-    }
-
-    /*
-     * The following styles are auto-applied to elements with
-     * transition="modal" when their visibility is toggled
-     * by Vue.js.
-     *
-     * You can easily play with the modal transition by editing
-     * these styles.
-     */
-
-    .modal-enter {
+    .modal-qew789bdf-enter {
         opacity: 0;
     }
 
-    .modal-leave-active {
+    .modal-qew789bdf-leave-active {
         opacity: 0;
     }
 
-    .modal-enter .modal-container,
-    .modal-leave-active .modal-container {
+    .modal-qew789bdf-enter .modal-qew789bdf-container,
+    .modal-qew789bdf-leave-active .modal-qew789bdf-container {
         -webkit-transform: scale(1.1);
         transform: scale(1.1);
     }
