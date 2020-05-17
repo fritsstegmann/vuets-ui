@@ -4,13 +4,13 @@
             <div v-if="progress < 100"
                  class="h-2 bar bg-gray-600 rounded-full"
                  :style="{'width': progress + '%'}"></div>
-            <div v-if="progress === 100"
-                 class="h-2 bar bg-green-500 rounded-full w-full"></div>
+            <div v-if="progress == 100"
+                 class="h-2 bar bg-green-600 rounded-full w-full"></div>
         </div>
         <div
                 v-show="showToolTip"
                 :style="{'left': left + 'px'}"
-                class="mt-1 absolute px-2 tooltip text-sm text-center border-gray-500 border-solid border bg-gray-100 text-gray-600 inline-block rounded">
+                class="mt-1 absolute px-2 z-10 tooltip text-sm text-center border-gray-500 border-solid border bg-gray-100 text-gray-600 inline-block rounded">
             {{ progress }}%
         </div>
     </div>
@@ -42,7 +42,7 @@
         public mouseOut() {
             setTimeout(() => {
                 this.showToolTip = false;
-            }, 2000);
+            }, 1000);
         }
     }
 </script>
