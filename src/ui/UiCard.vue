@@ -1,30 +1,33 @@
 <template>
-    <div class="ui-card-qew789bdf bg-white rounded shadow">
+    <div class="bg-white rounded m-auto overflow-hidden shadow">
+        <slot name="header">
+            <div class="font-bold p-4" v-if="title">{{ title }}</div>
+        </slot>
         <slot></slot>
-        <div v-if="$slots.footer" class="bg-gray-200 p-2 rounded-b">
-            <slot name="footer"></slot>
-        </div>
+        <template v-if="hasFooterSlot">
+            <div class="bg-gray-100 p-4">
+                <slot name="footer"></slot>
+            </div>
+        </template>
     </div>
 </template>
 
 <script lang="ts">
-    import {Component, Prop, Vue} from "vue-property-decorator";
+    import {Component, Vue} from "vue-property-decorator";
 
     @Component({
         components: {},
-        props: [],
+        props: ['title'],
         data() {
             return {};
         }
     })
     export default class UiCard extends Vue {
+        get hasFooterSlot() {
+            return !!this.$slots['footer']
+        }
     }
 </script>
 
 <style scoped lang="scss">
-    .ui-card-qew789bdf {
-        .card-body {
-            @apply py-4 px-4;
-        }
-    }
 </style>
