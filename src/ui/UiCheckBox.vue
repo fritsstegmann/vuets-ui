@@ -2,21 +2,23 @@
     <div class="flex">
         <input
                 :name="name"
-                :checked="model === true"
                 type="checkbox"
                 ref="checkBox"
-                :class="{'error': hasError}"
+                @change="check"
+                class="p-1 mt-1 m-2 w-4 h-4 appearance-none bg-white rounded outline-none focus:shadow-outline border-2 border-gray-300"
+                :class="{'error': hasError, 'bg-gray-600': model}"
         />
         <slot></slot>
     </div>
 </template>
 
 <script lang="ts">
-    import {Component, Watch, Prop, Vue} from "vue-property-decorator";
+    import {Component, Prop, Vue, Watch} from "vue-property-decorator";
 
     @Component({
         components: {},
-        props: ["hasError", "name", "checked", "value", "model"],
+        inheritAttrs: false,
+        props: ["hasError", "name", "model"],
         model: {
             prop: "model",
             event: "change"
@@ -31,23 +33,14 @@
         private model: any;
 
         @Prop()
-        private value?: string;
-
-        @Prop()
         private name?: string;
 
         @Prop()
         private hasError?: boolean;
 
-        @Watch('model')
-        public updateChecked() {
-            // @ts-ignore
-            this.$refs.checkBox.checked = !this.$refs.checkBox.checked;
-        }
-
         public check() {
             // @ts-ignore
-            this.$emit("change", !this.$refs.checkBox.checked);
+            this.$emit("change", this.$refs.checkBox.checked);
         }
     }
 </script>

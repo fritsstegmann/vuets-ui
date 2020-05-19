@@ -2,14 +2,14 @@
     <div class="flex">
         <input
                 :name="name"
-                :checked="checked"
                 type="radio"
                 ref="checkBox"
                 :value="value"
-                :class="{'error': hasError}"
+                @change="check"
+                class="p-1 mt-1 m-2 w-4 h-4 appearance-none outline-none focus:shadow-outline  bg-white rounded-full border-gray-300 border-2 border-white"
+                :class="{'error': hasError, 'bg-gray-600': model === value}"
         />
 
-        <div class="check" @click="check()"></div>
         <slot></slot>
     </div>
 </template>
