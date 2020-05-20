@@ -5,7 +5,7 @@
                 type="checkbox"
                 ref="checkBox"
                 @change="check"
-                class="p-1 mt-1 m-2 w-4 h-4 appearance-none bg-white rounded outline-none focus:shadow-outline border-2 border-gray-300"
+                class="p-2 mt-0 m-2 w-4 h-4 appearance-none bg-white rounded outline-none focus:shadow-outline border-2 border-gray-300"
                 :class="{'error': hasError, 'bg-gray-600': model}"
         />
         <slot></slot>
@@ -13,7 +13,7 @@
 </template>
 
 <script lang="ts">
-    import {Component, Prop, Vue, Watch} from "vue-property-decorator";
+    import {Component, Prop, Vue} from "vue-property-decorator";
 
     @Component({
         components: {},

@@ -1,16 +1,42 @@
 <template>
     <div>
+        <slot name="label">
+            <div v-if="label" class="ml-1 text-sm text-gray-600"
+                 :class="{
+                        'text-green-800': status === 'success',
+                        'text-red-800': status === 'error',
+                    }"
+            >{{ label }}</div>
+        </slot>
         <div class="relative">
             <input
                     :name="name"
                     type="text"
+                    v-bind="$attrs"
                     v-model="model" @keyup="$emit('change', model)"
-                    class="rounded border-2 border-gray-300 px-2 pl-2 py-1 outline-none focus:shadow-outline"
-                    :class="{'bg-gray-200 border-none focus:bg-white': inCard}"
+                    class="rounded border-2 border-gray-300 px-3 py-2 outline-none focus:shadow-outline transition ease-in-out"
+                    :class="{
+                        'bg-gray-200 border-none focus:bg-white': inCard,
+                        'border-green-500 text-green-800 bg-green-200': status === 'success',
+                        'border-red-500 text-red-800 bg-red-200': status === 'error',
+                    }"
             />
-            <span v-if="hasSuffix" class="mt-2 cursor-pointer mr-2 w-5 h-5 fill-current leading-none absolute right-0 top-0">
+            <span v-if="hasSuffix"
+                  class="mt-3 cursor-pointer mr-2 w-5 h-5 fill-current leading-none absolute right-0 top-0">
                 <slot name="suffix"></slot>
             </span>
+            <slot name="hint">
+                <div
+                    v-if="hint"
+                    class="ml-1 text-xs text-gray-600"
+                    :class="{
+                        'text-green-800': status === 'success',
+                        'text-red-800': status === 'error',
+                    }"
+                >
+                    {{ hint }}
+                </div>
+            </slot>
         </div>
     </div>
 </template>
@@ -20,6 +46,7 @@
 
     @Component<UiTextField>({
         components: {},
+        inheritAttrs: false,
         data() {
             return {}
         },
@@ -27,12 +54,13 @@
             prop: "model",
             event: "change",
         },
-        props: ['model', 'card'],
+        props: ['model', 'card', 'status', 'label', 'hint'],
     })
     export default class UiTextField extends Vue {
         get hasSuffix() {
             return this.$slots.suffix;
         }
+
         get inCard() {
             return this.$props.card !== undefined;
         }

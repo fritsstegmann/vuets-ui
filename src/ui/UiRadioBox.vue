@@ -6,7 +6,7 @@
                 ref="checkBox"
                 :value="value"
                 @change="check"
-                class="p-1 mt-1 m-2 w-4 h-4 appearance-none outline-none focus:shadow-outline  bg-white rounded-full border-gray-300 border-2 border-white"
+                class="p-2 mt-0 m-2 w-4 h-4 appearance-none outline-none focus:shadow-outline  bg-white rounded-full border-gray-300 border-2 border-white"
                 :class="{'error': hasError, 'bg-gray-600': model === value}"
         />
 
