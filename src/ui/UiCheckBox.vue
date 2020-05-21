@@ -5,15 +5,16 @@
                 type="checkbox"
                 ref="checkBox"
                 @change="check"
+                v-bind="$attrs"
                 class="p-2 mt-0 m-2 w-4 h-4 appearance-none bg-white rounded outline-none focus:shadow-outline border-2 border-gray-300"
-                :class="{'error': hasError, 'bg-gray-600': model}"
+                :class="{'error': hasError, 'bg-gray-600': model, 'cursor-not-allowed opacity-25': disabled}"
         />
         <slot></slot>
     </div>
 </template>
 
 <script lang="ts">
-    import {Component, Prop, Vue} from "vue-property-decorator";
+    import {Component, Prop, Ref, Vue} from "vue-property-decorator";
 
     @Component({
         components: {},
@@ -24,7 +25,9 @@
             event: "change"
         },
         data() {
-            return {};
+            return {
+                disabled: null,
+            };
         }
     })
     export default class UiCheckBox extends Vue {
@@ -38,9 +41,18 @@
         @Prop()
         private hasError?: boolean;
 
+        private disabled?: boolean;
+
+        @Ref()
+        private checkBox?: any | null;
+
         public check() {
             // @ts-ignore
             this.$emit("change", this.$refs.checkBox.checked);
+        }
+
+        mounted() {
+            this.disabled = this.checkBox.disabled;
         }
     }
 </script>

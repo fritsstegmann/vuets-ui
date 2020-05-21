@@ -11,14 +11,15 @@
         <div class="relative">
             <input
                     :name="name"
-                    type="text"
+                    :type="getType"
                     v-bind="$attrs"
                     v-model="model" @keyup="$emit('change', model)"
-                    class="rounded border-2 border-gray-300 px-3 py-2 outline-none focus:shadow-outline transition ease-in-out"
+                    class="disabled:cursor-not-allowed rounded border-gray-300 px-3 py-2 border-2 outline-none focus:shadow-outline transition ease-in-out"
                     :class="{
-                        'bg-gray-200 border-none focus:bg-white': inCard,
+                        'bg-gray-200 border-none focus:bg-white focus:text-gray-800': inCard,
                         'border-green-500 text-green-800 bg-green-200': status === 'success',
                         'border-red-500 text-red-800 bg-red-200': status === 'error',
+                        [className]: hasClassName
                     }"
             />
             <span v-if="hasSuffix"
@@ -54,15 +55,23 @@
             prop: "model",
             event: "change",
         },
-        props: ['model', 'card', 'status', 'label', 'hint'],
+        props: ['model', 'card', 'status', 'label', 'hint', 'className', 'type'],
     })
     export default class UiTextField extends Vue {
         get hasSuffix() {
             return this.$slots.suffix;
         }
 
+        get hasClassName() {
+            return this.$props.className !== undefined;
+        }
+
         get inCard() {
             return this.$props.card !== undefined;
+        }
+
+        get getType() {
+            return this.$props.type || 'text';
         }
     }
 </script>

@@ -1,26 +1,35 @@
 <template>
     <button
+            v-bind="$attrs"
+            ref="button"
             :class="{
-                'py-4 px-6': isLg,
-                'py-1 px-2': isSm,
-                'py-2 px-4': isNormal,
-                'bg-gray-700 text-gray-100 hover:bg-gray-500': type === 'primary',
-                'bg-gray-300 text-gray-700 hover:bg-gray-100': type === 'secondary',
+                'py-1 px-2': isXs,
+                'py-5 px-8': isLg,
+                'py-2 px-4': isSm,
+                'py-3 px-6': isNormal,
+                'bg-gray-800 text-gray-100 hover:bg-gray-600': type === 'primary',
+                'bg-gray-100 text-gray-800 hover:bg-gray-300': type === 'secondary',
                 'bg-transparent font-bold px-2 py-1 shadow-none border-none hover:underline': type === 'link',
                 'bg-red-700 text-gray-100 hover:bg-red-500': type === 'destructive',
+                [className]: hasClassName,
+                'cursor-not-allowed opacity-25': disabled
             }"
-            v-bind="$attrs"
-            class="disabled:cursor-not-allowed btn focus:shadow-outline rounded shadow outline-none" @click="$emit('click', event)">
+            class="focus:shadow-outline leading-none rounded shadow outline-none" @click="$emit('click', event)">
         <slot/>
     </button>
 </template>
 
 <script lang="ts">
-    import {Component, Vue} from "vue-property-decorator";
+    import {Component, Ref, Vue, Watch} from "vue-property-decorator";
 
     @Component({
         inheritAttrs: false,
-        props: ['type', 'lg', 'sm'],
+        props: ['type', 'lg', 'sm', 'xs', 'className'],
+        data() {
+            return {
+                disabled: false
+            }
+        }
     })
     export default class UiButton extends Vue {
         get isLg() {
@@ -29,8 +38,23 @@
         get isSm() {
             return this.$props.sm !== undefined;
         }
+        get isXs() {
+            return this.$props.xs !== undefined;
+        }
         get isNormal() {
-            return !this.isLg && !this.isSm;
+            return !this.isLg && !this.isSm && !this.isXs;
+        }
+        get hasClassName() {
+            return this.$props.className !== undefined;
+        }
+
+        @Ref()
+        private button?: any;
+
+        private disabled?: boolean;
+
+        mounted() {
+            this.disabled = this.button.disabled;
         }
     }
 </script>
