@@ -1,7 +1,10 @@
 <template>
     <div class="bg-white rounded m-auto overflow-hidden shadow">
         <slot name="header">
-            <div class="font-bold p-4" v-if="title">{{ title }}</div>
+            <div class="p-4" v-if="title">
+                <div class="font-bold">{{ title }}</div>
+                <div class="text-sm text-gray-700" v-if="subTitle">{{ subTitle }}</div>
+            </div>
         </slot>
         <slot></slot>
         <template v-if="hasFooterSlot">
@@ -17,7 +20,7 @@
 
     @Component({
         components: {},
-        props: ['title'],
+        props: ['title', 'subTitle'],
         data() {
             return {};
         }
