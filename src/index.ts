@@ -16,12 +16,12 @@ import UiCheckBox from "./ui/UiCheckBox";
 import UiTextField from "./ui/UiTextField.vue";
 
 export function VueUI(v: any) {
-    v.component("ui-button", UiButton);
-    v.component("ui-card", UiCard);
-    v.component("ui-pill", UiPill);
-    v.component("ui-progress", UiProgress);
-    v.component("ui-modal", UiModal);
-    v.component("ui-radiobox", UiRadioBox);
-    v.component("ui-checkbox", UiCheckBox);
-    v.component("ui-textfield", UiTextField);
+    v.component("UiButton", UiButton);
+    v.component("UiCard", UiCard);
+    v.component("UiPill", UiPill);
+    v.component("UiProgress", UiProgress);
+    v.component("UiModal", UiModal);
+    v.component("UiRadioBox", UiRadioBox);
+    v.component("UiCheckBox", UiCheckBox);
+    v.component("UiTextField", UiTextField);
 }
