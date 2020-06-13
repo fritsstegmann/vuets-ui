@@ -16,37 +16,28 @@
     </div>
 </template>
 
-<script lang="ts">
-    import {Component, Prop, Vue} from "vue-property-decorator";
-
-    @Component({
-        components: {},
+<script>
+    export default {
         props: ["progress", "tooltip"],
         data() {
-            return {};
-        }
-    })
-    export default class UiProgress extends Vue {
-
-        @Prop({default: 0})
-        private progress?: number;
-
-        public showToolTip: boolean = false;
-        public left: number = 0;
-
-        get canDisplayToolTip() {
-            return this.$props.tooltip !== undefined;
-        }
-
-        public mouseEnter(event: any) {
-            this.left = (event.target.clientWidth / 2) - 20;
-            this.showToolTip = true;
-        }
-
-        public mouseOut() {
-            setTimeout(() => {
-                this.showToolTip = false;
-            }, 1000);
+            return {
+                left: 0,
+                showToolTip: false,
+            };
+        },
+        methods: {
+            canDisplayToolTip() {
+                return this.$props.tooltip !== undefined;
+            },
+            mouseEnter(event) {
+                this.left = (event.target.clientWidth / 2) - 20;
+                this.showToolTip = true;
+            },
+            mouseOut() {
+                setTimeout(() => {
+                    this.showToolTip = false;
+                }, 1200);
+            }
         }
     }
 </script>

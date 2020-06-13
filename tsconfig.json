@@ -13,6 +13,7 @@
         "sourceMap": true,
         "skipLibCheck": true,
         "resolveJsonModule": true,
+        "baseUrl": "./src/",
         "outDir": "./dist/",
         "lib": [
             "es2015"
@@ -20,7 +21,7 @@
     },
     "include": [
         "src/**/*.ts",
-        "src/ui/*.vue"
+        "src/**/*.vue"
     ],
     "exclude": [
         "./node_modules"

@@ -18,29 +18,23 @@
     </div>
 </template>
 
-<script lang="ts">
-    import {Component, Vue} from "vue-property-decorator";
-
-    @Component({
-        components: {},
+<script>
+    export default {
         props: ['title'],
         data() {
             return {
                 showModal: false
             };
-        }
-    })
-    export default class UiModal extends Vue {
-
-        get hasFooterSlot() {
-            return !!this.$slots['footer']
-        }
-
-        public closeModal() {
-            this.$emit("close");
-        }
+        },
+        computed: {
+            hasFooterSlot() {
+                return this.$slots['footer'];
+            },
+        },
+        methods: {
+            closeModal() {
+                this.$emit("close");
+            },
+        },
     }
 </script>
-
-<style scoped lang="scss">
-</style>

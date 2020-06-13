@@ -21,7 +21,7 @@ import UiCardFooter from "./ui/UiCardFooter.vue";
 // @ts-ignore
 import UiCardGrid from "./ui/UiCardGrid.vue";
 
-export function Storna(v: any) {
+export default function (v: any) {
     v.component("UiButton", UiButton);
     v.component("UiCard", UiCard);
     v.component("UiCardGrid", UiCardGrid);

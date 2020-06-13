@@ -1,7 +1,7 @@
 <template>
     <div class="bg-white rounded m-auto overflow-hidden shadow">
         <slot name="header">
-            <UiCardHeader slot="header" :title="title" :subtitle="subTitle"></UiCardHeader>
+            <UiCardHeader slot="header" :title="title" :sub-title="subTitle"></UiCardHeader>
         </slot>
         <slot></slot>
         <template v-if="hasFooterSlot">
@@ -12,20 +12,19 @@
     </div>
 </template>
 
-<script lang="ts">
-    import {Component, Vue} from "vue-property-decorator";
+<script>
     import UiCardHeader from "./UiCardHeader.vue";
 
-    @Component({
+    export default {
         components: {UiCardHeader},
         props: ['title', 'subTitle'],
         data() {
             return {};
-        }
-    })
-    export default class UiCard extends Vue {
-        get hasFooterSlot() {
-            return !!this.$slots['footer']
+        },
+        computed: {
+            hasFooterSlot() {
+                return this.$slots['footer']
+            }
         }
     }
 </script>

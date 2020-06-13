@@ -15,11 +15,8 @@
     </div>
 </template>
 
-<script lang="ts">
-    import {Component, Vue, Watch, Prop, Ref} from "vue-property-decorator";
-
-    @Component({
-        components: {},
+<script>
+    export default {
         inheritAttrs: false,
         props: ["hasError", "name", "checked", "value", "model"],
         model: {
@@ -30,41 +27,22 @@
             return {
                 disabled: null,
             };
-        }
-    })
-    export default class UiRadioButton extends Vue {
-        @Prop()
-        private model: any;
-
-        @Prop()
-        private value?: string;
-
-        @Prop()
-        private name?: string;
-
-        @Prop()
-        private hasError?: boolean;
-
-        @Ref()
-        private checkBox?: any;
-
-        private disabled?: boolean;
-
-        public mounted() {
+        },
+        mounted() {
             // @ts-ignore
             this.checkBox.checked = this.model == this.value;
             this.disabled = this.checkBox.disabled;
-        }
-
-        @Watch('model')
-        public updateChecked() {
-            // @ts-ignore
-            this.$refs.checkBox.checked = this.model == this.value;
-        }
-
-        public check() {
-            // @ts-ignore
-            this.$emit("change", this.$refs.checkBox.value);
+        },
+        methods: {
+            check() {
+                // @ts-ignore
+                this.$emit("change", this.$refs.checkBox.value);
+            }
+        },
+        watch: {
+            'model': () => {
+                this.$refs.checkBox.checked = this.model == this.value;
+            }
         }
     }
 </script>

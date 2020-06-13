@@ -9,15 +9,8 @@
     </div>
 </template>
 
-<script lang="ts">
-    import {Component, Prop, Vue} from "vue-property-decorator";
-
-    @Component
-    export default class UiCardFooter extends Vue {
-        @Prop({default: ""})
-        private text!: string | null;
+<script>
+    export default {
+        props: ['text'],
     }
 </script>
-
-<style scoped lang="scss">
-</style>

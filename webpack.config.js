@@ -6,9 +6,6 @@ module.exports = {
     entry: path.resolve(__dirname, 'src/index.ts'),
     resolve: {
         extensions: ['.tsx', '.ts', '.js', '.vue'],
-        alias: {
-            'vue$': 'vue/dist/vue.esm.js'
-        }
     },
     performance: {
         hints: "warning"
@@ -35,8 +32,6 @@ module.exports = {
                 loader: 'babel-loader',
                 exclude: /node_modules/,
             },
-            // this will apply to both plain `.css` files
-            // AND `<style>` blocks in `.vue` files
             {
                 test: /\.css$/,
                 use: [

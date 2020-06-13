@@ -24,19 +24,8 @@
     </div>
 </template>
 
-<script lang="ts">
-    import {Component, Vue, Prop} from "vue-property-decorator";
-
-    @Component({
-        components: {},
+<script>
+    export default {
         props: ["status"],
-    })
-    export default class UiPill extends Vue {
-
-        @Prop()
-        private status?: string;
     }
 </script>
-
-<style scoped type="scss">
-</style>

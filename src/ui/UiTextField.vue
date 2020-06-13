@@ -1,7 +1,7 @@
 <template>
     <div>
         <slot name="label">
-            <div v-if="label" class="ml-1 text-sm text-gray-600"
+            <div v-if="label" class="text-sm text-gray-600"
                  :class="{
                         'text-green-800': status === 'success',
                         'text-red-800': status === 'error',
@@ -47,75 +47,37 @@
     </div>
 </template>
 
-<script lang="ts">
-    import {Component, Ref, Vue} from "vue-property-decorator";
-    import {Observable} from 'rxjs';
-
-    @Component<UiTextField>({
+<script>
+    export default {
         components: {},
         inheritAttrs: false,
-        data() {
-            return {
-                disabled: false,
-            }
-        },
         model: {
             event: "change",
         },
-        props: ['card', 'status', 'label', 'hint', 'className', 'type'],
-    })
-    export default class UiTextField extends Vue {
-
-        @Ref()
-        private componentRef?: any;
-
-        get hasSuffix() {
-            return this.$slots.suffix;
-        }
-
-        get hasClassName() {
-            return this.$props.className !== undefined;
-        }
-
-        get inCard() {
-            return this.$props.card !== undefined;
-        }
-
-        get getType() {
-            return this.$props.type || 'text';
-        }
-
-        private disabled?: boolean;
-
-        mounted() {
-            this.disabled = this.componentRef.disabled;
-        }
-
-        $eventToObservable(evtName: string): Observable<{ name: string, msg: any }> {
-            const vm = this
-            const evtNames = Array.isArray(evtName) ? evtName : [evtName]
-
-            return new Observable<{ name: string, msg: any }>(observer => {
-                // @ts-ignore
-                const eventPairs = evtNames.map((name: string) => {
-                    const callback = (msg: any) => observer.next({name, msg})
-                    if (name !== 'change') {
-                        if (this.componentRef !== undefined && this.componentRef !== null) {
-                            this.componentRef.addEventListener(name, callback)
-                        } else {
-                            vm.$on(name, callback)
-                        }
-                    } else {
-                        vm.$on(name, callback)
-                    }
-                    return {name, callback}
-                })
-                return () => {
-                    // Only remove the specific callback
-                    eventPairs.forEach((pair: any) => vm.$off(pair.name, pair.callback))
-                }
-            })
-        }
+        props: [
+            'card',
+            'status',
+            'label',
+            'hint',
+            'className',
+            'type',
+            'name',
+            'disabled'
+        ],
+        computed: {
+            hasSuffix() {
+                return this.$slots.suffix;
+            },
+            hasClassName() {
+                return this.$props.className !== undefined;
+            },
+            inCard() {
+                return this.$props.card !== undefined;
+            },
+            getType() {
+                return this.$props.type || 'text';
+            },
+        },
     }
 </script>
 

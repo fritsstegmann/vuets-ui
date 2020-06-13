@@ -8,15 +8,8 @@
     </div>
 </template>
 
-<script lang="ts">
-    import {Component, Prop, Vue} from "vue-property-decorator";
-
-    @Component({
+<script>
+    export default {
         props: ['list']
-    })
-    export default class UiCardGrid extends Vue {
     }
 </script>
-
-<style scoped lang="scss">
-</style>
