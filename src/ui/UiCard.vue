@@ -1,10 +1,7 @@
 <template>
     <div class="bg-white rounded m-auto overflow-hidden shadow">
         <slot name="header">
-            <div class="p-4" v-if="title">
-                <div class="font-bold">{{ title }}</div>
-                <div class="text-sm text-gray-700" v-if="subTitle">{{ subTitle }}</div>
-            </div>
+            <UiCardHeader slot="header" :title="title" :subtitle="subTitle"></UiCardHeader>
         </slot>
         <slot></slot>
         <template v-if="hasFooterSlot">
@@ -17,9 +14,10 @@
 
 <script lang="ts">
     import {Component, Vue} from "vue-property-decorator";
+    import UiCardHeader from "./UiCardHeader.vue";
 
     @Component({
-        components: {},
+        components: {UiCardHeader},
         props: ['title', 'subTitle'],
         data() {
             return {};

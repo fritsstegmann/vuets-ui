@@ -14,8 +14,12 @@ module.exports = {
         hints: "warning"
     },
     mode: "production",
+    externals: {
+        vue: 'Vue',
+       'vue-property-decorator': 'commonjs2 vue-property-decorator',
+    },
     output: {
-        library: 'fritsstegmann-vueui',
+        library: 'storna',
         libraryTarget: 'commonjs-module',
         filename: 'index.js',
         path: path.resolve(__dirname, 'dist'),

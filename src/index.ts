@@ -14,10 +14,19 @@ import UiRadioBox from "./ui/UiRadioBox";
 import UiCheckBox from "./ui/UiCheckBox";
 // @ts-ignore
 import UiTextField from "./ui/UiTextField.vue";
+// @ts-ignore
+import UiCardHeader from "./ui/UiCardHeader.vue";
+// @ts-ignore
+import UiCardFooter from "./ui/UiCardFooter.vue";
+// @ts-ignore
+import UiCardGrid from "./ui/UiCardGrid.vue";
 
-export function VueUI(v: any) {
+export function Storna(v: any) {
     v.component("UiButton", UiButton);
     v.component("UiCard", UiCard);
+    v.component("UiCardGrid", UiCardGrid);
+    v.component("UiCardHeader", UiCardHeader);
+    v.component("UiCardFooter", UiCardFooter);
     v.component("UiPill", UiPill);
     v.component("UiProgress", UiProgress);
     v.component("UiModal", UiModal);

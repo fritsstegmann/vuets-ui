@@ -9,7 +9,7 @@
                 </slot>
                 <slot></slot>
                 <template v-if="hasFooterSlot">
-                    <div class="bg-gray-100 p-4">
+                    <div class="bg-gray-200">
                         <slot name="footer"></slot>
                     </div>
                 </template>

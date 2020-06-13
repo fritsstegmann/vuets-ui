@@ -1,7 +1,7 @@
 <template>
     <button
             v-bind="$attrs"
-            ref="button"
+            ref="buttonRef"
             :class="{
                 'py-1 px-2': isXs,
                 'py-5 px-8': isLg,
@@ -11,7 +11,7 @@
                 'bg-gray-100 text-gray-800 hover:bg-gray-300': type === 'secondary' || type === 's',
                 'bg-transparent px-2 py-1 shadow-none border-none hover:underline': type === 'link' || type === 'l',
                 'bg-red-700 text-gray-100 hover:bg-red-500': type === 'destructive' || type === 'd',
-                'cursor-not-allowed opacity-25': disabled,
+                'cursor-not-allowed opacity-25': buttonDisabled,
                 [className]: hasClassName,
             }"
             class="focus:shadow-outline font-semibold leading-none rounded shadow outline-none"
@@ -28,11 +28,6 @@
     @Component({
         inheritAttrs: false,
         props: ['type', 'lg', 'sm', 'xs', 'className'],
-        data() {
-            return {
-                disabled: false
-            }
-        }
     })
     export default class UiButton extends Vue {
         get isLg() {
@@ -52,12 +47,12 @@
         }
 
         @Ref()
-        private button?: any;
+        private buttonRef!: any;
 
-        private disabled?: boolean;
+        private buttonDisabled: boolean = false;
 
         mounted() {
-            this.disabled = this.button.disabled;
+            this.buttonDisabled = this.buttonRef.disabled;
         }
 
         $eventToObservable(evtName: string): Observable<{ name: string, msg: any }> {
@@ -69,8 +64,8 @@
                 const eventPairs = evtNames.map((name: string) => {
                     const callback = (msg: any) => observer.next({name, msg})
                     if (name !== 'change') {
-                        if (this.button !== undefined && this.button !== null) {
-                            this.button.addEventListener(name, callback)
+                        if (this.buttonRef !== undefined && this.buttonRef !== null) {
+                            this.buttonRef.addEventListener(name, callback)
                         } else {
                             vm.$on(name, callback)
                         }
