@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-white rounded m-auto overflow-hidden shadow">
+    <div class="bg-white rounded overflow-hidden shadow">
         <slot name="header">
             <UiCardHeader slot="header" :title="title" :sub-title="subTitle"></UiCardHeader>
         </slot>
@@ -13,6 +13,7 @@
 </template>
 
 <script>
+    // @ts-ignore
     import UiCardHeader from "./UiCardHeader.vue";
 
     export default {
@@ -23,6 +24,7 @@
         },
         computed: {
             hasFooterSlot() {
+                // @ts-ignore
                 return this.$slots['footer']
             }
         }

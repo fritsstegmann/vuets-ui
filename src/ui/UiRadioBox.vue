@@ -5,10 +5,12 @@
                 type="radio"
                 ref="checkBox"
                 :value="value"
-                @change="check"
+                @change="$emit('input', $event.target.value)"
                 v-bind="$attrs"
-                class="p-2 mt-0 m-2 w-4 h-4 appearance-none outline-none focus:shadow-outline  bg-white rounded-full border-gray-300 border-2 border-white"
-                :class="{'error': hasError, 'bg-gray-600': model === value, 'cursor-not-allowed opacity-25': disabled}"
+                v-on="$listeners"
+                class="p-2 w-4 h-4 appearance-none outline-none focus:shadow-outline  bg-white rounded-full border-gray-300 border-2 border-white"
+                :class="{'error': hasError, 'bg-gray-600': model === value, 'cursor-not-allowed opacity-25': isDisabled}"
+                :checked="this.model === this.value"
         />
 
         <slot></slot>
@@ -18,31 +20,22 @@
 <script>
     export default {
         inheritAttrs: false,
-        props: ["hasError", "name", "checked", "value", "model"],
+        props: [
+            "hasError",
+            "name",
+            "checked",
+            "value",
+            "model",
+            "disabled"
+        ],
         model: {
             prop: "model",
-            event: "change"
+            event: "input"
         },
-        data() {
-            return {
-                disabled: null,
-            };
-        },
-        mounted() {
-            // @ts-ignore
-            this.checkBox.checked = this.model == this.value;
-            this.disabled = this.checkBox.disabled;
-        },
-        methods: {
-            check() {
-                // @ts-ignore
-                this.$emit("change", this.$refs.checkBox.value);
-            }
-        },
-        watch: {
-            'model': () => {
-                this.$refs.checkBox.checked = this.model == this.value;
-            }
+        computed: {
+            isDisabled() {
+                return typeof this.disabled !== 'undefined' && this.disabled !== false;
+            },
         }
     }
 </script>

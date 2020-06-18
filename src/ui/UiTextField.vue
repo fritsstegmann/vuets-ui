@@ -33,7 +33,7 @@
             <slot name="hint">
                 <div
                         v-if="hint"
-                        class="ml-1 text-xs text-gray-600"
+                        class="text-xs text-gray-600"
                         :class="{
                         'text-green-800': status === 'success',
                         'text-red-800': status === 'error',
