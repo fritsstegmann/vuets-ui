@@ -26,6 +26,14 @@
 
 <script>
 export default {
-    props: ['status']
+    props: {
+        status: {
+            required: false,
+            default: 'normal',
+            validator(value) {
+                return ['normal', 'warning', 'failed', 'success'].indexOf(value) !== -1
+            },
+        }
+    }
 }
 </script>

@@ -15,13 +15,15 @@ import UiCardSelect from './ui/UiCardSelect.vue'
 import UISelectBox from './ui/UISelectBox.vue'
 import UISelectBoxOption from './ui/UISelectBoxOption.vue'
 
-export default function (v) {
-    v.component('BlocProvider', BlocProvider)
+function install(v) {
+    if (install.installed) return
+    install.installed = true
+
     v.component('UiBreadCrumbRouterLink', UiBreadCrumbRouterLink)
     v.component('UiBreadCrumb', UiBreadCrumb)
     v.component('UISelectBox', UISelectBox)
     v.component('UISelectBoxOption', UISelectBoxOption)
-    v.component('UiButton', UiButton)
+    v.component('UIButton', UiButton)
     v.component('UICard', UICard)
     v.component('UiCardGrid', UiCardGrid)
     v.component('UiCardHeader', UiCardHeader)
@@ -34,3 +36,20 @@ export default function (v) {
     v.component('UiTextField', UiTextField)
     v.component('UiCardSelect', UiCardSelect)
 }
+
+const Storna = {
+    install,
+}
+
+let GlobalVue = null
+if (typeof window !== 'undefined') {
+    GlobalVue = window.vue
+} else if (typeof global !== 'undefined') {
+    GlobalVue = global.vue
+}
+
+if (GlobalVue) {
+    GlobalVue.use(Storna)
+}
+
+export default Storna
