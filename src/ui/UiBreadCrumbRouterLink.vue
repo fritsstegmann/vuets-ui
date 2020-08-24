@@ -9,24 +9,23 @@
     </UiBreadCrumb>
 </template>
 <script>
-    import UiBreadCrumb from "./UiBreadCrumb.vue";
+import UiBreadCrumb from './UiBreadCrumb.vue'
 
-    export default {
-        components: {UiBreadCrumb},
-        props: {
-            breadcrumbs: {
-                type: Array,
-                required: true,
-                default: [],
-            }
+export default {
+    components: {UiBreadCrumb},
+    props: {
+        breadcrumbs: {
+            type: Array,
+            required: true
+        }
+    },
+    computed: {
+        getParentList() {
+            return this.breadcrumbs.slice(0, this.breadcrumbs.length - 1)
         },
-        computed: {
-            getParentList() {
-                return this.breadcrumbs.slice(0, this.breadcrumbs.length - 1);
-            },
-            getCurrentPageTitle() {
-                return this.breadcrumbs[this.breadcrumbs.length - 1].title;
-            }
+        getCurrentPageTitle() {
+            return this.breadcrumbs[this.breadcrumbs.length - 1].title
         }
     }
+}
 </script>

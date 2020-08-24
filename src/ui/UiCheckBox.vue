@@ -21,17 +21,17 @@
 </template>
 
 <script>
-    export default {
-        inheritAttrs: false,
-        props: ["hasError", "name", "model", "disabled"],
-        model: {
-            prop: "model",
-            event: "input"
-        },
-        computed: {
-            isDisabled() {
-                return typeof this.disabled !== 'undefined' && this.disabled !== false;
-            },
+export default {
+    inheritAttrs: false,
+    props: ['hasError', 'name', 'model', 'disabled'],
+    model: {
+        prop: 'model',
+        event: 'input'
+    },
+    computed: {
+        isDisabled() {
+            return typeof this.disabled !== 'undefined' && this.disabled !== false
         }
     }
+}
 </script>

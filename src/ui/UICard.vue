@@ -13,22 +13,20 @@
 </template>
 
 <script>
-    // @ts-ignore
-    import UiCardHeader from "./UiCardHeader.vue";
+import UiCardHeader from './UiCardHeader.vue'
 
-    export default {
-        components: {UiCardHeader},
-        props: ['title', 'subTitle'],
-        data() {
-            return {};
-        },
-        computed: {
-            hasFooterSlot() {
-                // @ts-ignore
-                return this.$slots['footer']
-            }
+export default {
+    components: { UiCardHeader },
+    props: ['title', 'subTitle'],
+    data() {
+        return {}
+    },
+    computed: {
+        hasFooterSlot() {
+            return this.$slots.footer
         }
     }
+}
 </script>
 
 <style scoped lang="scss">

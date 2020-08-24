@@ -19,22 +19,22 @@
 </template>
 
 <script>
-    export default {
-        props: ['title'],
-        data() {
-            return {
-                showModal: false
-            };
-        },
-        computed: {
-            hasFooterSlot() {
-                return this.$slots['footer'];
-            },
-        },
-        methods: {
-            closeModal() {
-                this.$emit("close");
-            },
-        },
+export default {
+    props: ['title'],
+    data() {
+        return {
+            showModal: false
+        }
+    },
+    computed: {
+        hasFooterSlot() {
+            return this.$slots.footer
+        }
+    },
+    methods: {
+        closeModal() {
+            this.$emit('close')
+        }
     }
+}
 </script>
